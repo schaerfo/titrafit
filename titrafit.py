@@ -25,11 +25,24 @@ import numpy as np
 import scipy.optimize
 from PySide2.QtCore import Slot
 from PySide2.QtWidgets import QApplication, QGridLayout, QWidget
-from fittest import TWrapperFast
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas, \
     NavigationToolbar2QT as NavigationToolbar
 from matplotlib.figure import Figure
 from ui_inputform import Ui_inputForm
+
+try:
+    from tfast import TitrationVolume
+except ImportError:
+    print("tfast module not found, using Python implementation of fit function")
+    from titration import TitrationVolume
+
+
+class TWrapper(TitrationVolume):
+    def __init__(self, *args):
+        super().__init__(*args)
+
+    def __call__(self, c0_b, *args):
+        return [TitrationVolume.__call__(self, i, *args) for i in c0_b]
 
 
 class Titrafit(QWidget):
@@ -71,7 +84,7 @@ class Titrafit(QWidget):
     def fit(self):
         v0 = self.ui.v0Input.value()
         cB = self.ui.cBInput.value()
-        t = TWrapperFast(v0, cB, self.ui.pKsForm.pKsModel.pKs)
+        t = TWrapper(v0, cB, self.ui.pKsForm.pKsModel.pKs)
         x, y = self.ui.measuredValuesForm.valuesModel.getValuesAsArrays()
         popt, _ = scipy.optimize.curve_fit(t, x, y, p0=(0.2,), bounds=(0, np.inf))
         xFit = np.linspace(x[0], x[-1], 500)

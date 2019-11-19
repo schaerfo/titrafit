@@ -6,7 +6,7 @@ Kw = 1e-14
 epsilon = 1e-8
 
 
-class Calc:
+class Titration:
     def __init__(self, pKs):
         self.Ks = [pow(10, -i) for i in pKs]
         self.result_cache = []
@@ -44,7 +44,7 @@ class Calc:
         return m[2], m[3]
 
 
-class CalcVol(Calc):
+class TitrationVolume(Titration):
     def __init__(self, V0, c0_b, pKs):
         self.c0_b = c0_b
         self.V0 = V0
