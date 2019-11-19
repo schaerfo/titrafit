@@ -24,7 +24,7 @@ from sys import argv
 import numpy as np
 import scipy.optimize
 from PySide2.QtCore import Slot
-from PySide2.QtWidgets import QApplication, QGridLayout, QWidget
+from PySide2.QtWidgets import QApplication, QGridLayout, QMessageBox, QWidget
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas, \
     NavigationToolbar2QT as NavigationToolbar
 from matplotlib.figure import Figure
@@ -83,9 +83,27 @@ class Titrafit(QWidget):
 
     def fit(self):
         v0 = self.ui.v0Input.value()
+        if v0 == 0.0:
+            QMessageBox.information(self, "Hinweis", "V<sub>0</sub> darf nicht 0 sein.")
+            return
+
         cB = self.ui.cBInput.value()
-        t = TWrapper(v0, cB, self.ui.pKsForm.pKsModel.pKs)
+        if cB == 0.0:
+            QMessageBox.information(self, "Hinweis", "c(NaOH) darf nicht 0 sein.")
+            return
+
+        pKs = self.ui.pKsForm.pKsModel.pKs
+        if not len(pKs):
+            QMessageBox.information(self, "Hinweis", "Es muss mindestens ein pK<sub>s</sub>-Wert angegeben werden.")
+            return
+
         x, y = self.ui.measuredValuesForm.valuesModel.getValuesAsArrays()
+        assert len(x) == len(y)
+        if not len(x):
+            QMessageBox.information(self, "Hinweis", "Es muss mindestens ein Messwert angegeben werden.")
+            return
+
+        t = TWrapper(v0, cB, pKs)
         popt, _ = scipy.optimize.curve_fit(t, x, y, p0=(0.2,), bounds=(0, np.inf))
         xFit = np.linspace(x[0], x[-1], 500)
         self.axes.plot(xFit * 1000, t(xFit, *popt))
