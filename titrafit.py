@@ -82,7 +82,8 @@ class Titrafit(QWidget):
         self.canvas.draw()
 
     def fit(self):
-        v0 = self.ui.v0Input.value()
+        # Volume input is in ml, therefore divide by 1000 to obtain l
+        v0 = self.ui.v0Input.value() / 1000
         if v0 == 0.0:
             QMessageBox.information(self, "Hinweis", "V<sub>0</sub> darf nicht 0 sein.")
             return
