@@ -1,10 +1,6 @@
 #!/usr/bin/python3
 
 import numpy as np
-import matplotlib.pyplot as plt
-from time import monotonic
-from tfast import Titration, TitrationVolume
-#from matplotlib.backends.backend_qt5cairo import FigureCanvasQTCairo as FigureCanvas
 
 Kw = 1e-14
 epsilon = 1e-8
@@ -35,7 +31,6 @@ class Calc:
                 A[0] *= np.sqrt(el)
 
             x = c0_s / (HA + sum(A))
-            #print(x)
             if abs(x - 1) < epsilon:
                 self.result_cache.append((c0_s, c0_b, HA, A[0]))
                 return -(np.log(H) / np.log(10))
@@ -63,29 +58,4 @@ class CalcVol(Calc):
 
     def percentage(self, percentage, n0_s):
         x = self.__call__(percentage * n0_s / self.c0_b, n0_s)
-        #print(x)
         return x
-
-
-def main():
-    pKs = (2.16, 7.21, 12.32)
-    x = np.arange(0,  3, 0.02)
-    c = CalcVol(0.3, 0.1, pKs)
-
-    start = monotonic()
-    res = [c(i, 0.1) for i in x]
-    slow = monotonic() - start
-    plt.plot(x, res)
-
-    v = TitrationVolume(0.3, 0.1, pKs)
-    start = monotonic()
-    res2 = [v(i, 0.1) for i in x]
-    fast = monotonic() - start
-    plt.plot(x, res2)
-
-    print(slow/fast)
-    plt.show()
-
-
-if __name__ == "__main__":
-    main()

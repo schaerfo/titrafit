@@ -31,16 +31,6 @@ using float_type = double;
 constexpr float_type Kw = 1e-14;
 constexpr float_type epsilon = 1e-8;
 
-/*template<typename T>
-std::vector<T> py_obj_to_vec(boost::python::object const& o){
-    std::vector<T> res;
-    for (std::size_t i=0; i<boost::python::len(o); ++i) {
-        T x = boost::python::extract<T>(o[i]);
-        res.emplace_back(x);
-    }
-    return res;
-}*/
-
 class Titration{
 public:
     struct Result {
@@ -69,11 +59,6 @@ public:
             Titration{std::vector<float_type>{pKs}}
     {
     }
-
-    /*explicit Titration (const boost::python::object& pKs):
-            Titration{py_obj_to_vec<float_type>(pKs)}
-    {
-    }*/
 
     float_type operator()(float_type c0_b, float_type c0_s) const{
         std::vector<float_type> A(m_Ks.size(), 1);
@@ -141,11 +126,6 @@ public:
          , m_V0{V0}
     {
     }
-    
-    /*TitrationVolume(float_type V0, float_type c0_b, const boost::python::object& pKs):
-         TitrationVolume{V0, c0_b, py_obj_to_vec<float_type>(pKs)}
-    {
-    }*/
 
     float_type operator() (float_type V_b, float_type n0_s){
         float_type V = m_V0 + V_b,
@@ -174,23 +154,4 @@ PYBIND11_MODULE(tfast, m) {
             .def(init<float_type, float_type, std::vector<float_type>>())
             .def("__call__", &TitrationVolume::operator())
             .def("percentage", &TitrationVolume::percentage);
-}
-
-int main(int argc, char const *argv[])
-{
-    Titration t{4};
-    std::vector<float_type> res;
-
-    //res.reserve(0.2/0.15);
-    auto start = std::chrono::steady_clock::now();
-    for (float_type p = 0.; p < 0.2; p+= 0.001)
-        res.emplace_back(t(0.1, p));
-    std::chrono::duration<double> interval = std::chrono::steady_clock::now() - start;
-
-    for (auto val : res)
-        std::cout << val << '\n';
-
-    std::cout << "Duration: " << interval.count() << '\n';
-
-    return 0;
 }
