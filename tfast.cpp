@@ -118,40 +118,10 @@ private:
     }
 };
 
-class TitrationVolume : public Titration{
-public:
-    TitrationVolume(float_type V0, float_type c0_b, std::vector<float_type> pKs)
-         : Titration{std::move(pKs)}
-         , m_c0_b{c0_b}
-         , m_V0{V0}
-    {
-    }
-
-    float_type operator() (float_type V_b, float_type n0_s){
-        float_type V = m_V0 + V_b,
-                   c_b = m_c0_b * V_b / V,
-                   c_s = n0_s / V;
-        
-        return Titration::operator()(c_b, c_s);
-    }
-    
-    float_type percentage(float_type percentage, float_type n0_s) {
-        return (*this)(percentage*n0_s / m_c0_b, n0_s);
-    }
-
-private:
-    const float_type m_c0_b, m_V0;
-};
-
 PYBIND11_MODULE(tfast, m) {
     using namespace pybind11;
     class_<Titration>(m, "Titration")
             .def(init<std::vector<float_type>>())
             .def("__call__", &Titration::operator())
             .def("percentage", &Titration::percentage);
-    
-    class_<TitrationVolume>(m, "TitrationVolume")
-            .def(init<float_type, float_type, std::vector<float_type>>())
-            .def("__call__", &TitrationVolume::operator())
-            .def("percentage", &TitrationVolume::percentage);
 }

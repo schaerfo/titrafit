@@ -31,10 +31,27 @@ from matplotlib.figure import Figure
 from ui_inputform import Ui_inputForm
 
 try:
-    from tfast import TitrationVolume
+    from tfast import Titration
 except ImportError:
     print("tfast module not found, using Python implementation of fit function")
-    from titration import TitrationVolume
+    from titration import Titration
+
+
+class TitrationVolume(Titration):
+    def __init__(self, V0, c0_b, pKs):
+        self.c0_b = c0_b
+        self.V0 = V0
+        super().__init__(pKs)
+
+    def __call__(self, V_b, n0_s):
+        V = self.V0 + V_b
+        c_s = n0_s / V
+        c_b = self.c0_b * V_b / V
+        return super().__call__(c_b, c_s)
+
+    def percentage(self, percentage, n0_s):
+        x = self.__call__(percentage * n0_s / self.c0_b, n0_s)
+        return x
 
 
 class TWrapper(TitrationVolume):
