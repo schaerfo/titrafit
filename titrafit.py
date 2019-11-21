@@ -37,7 +37,15 @@ except ImportError:
     from titration import Titration
 
 
-class TitrationVolume(Titration):
+class TWrapper(Titration):
+    def __init__(self, *args):
+        super().__init__(*args)
+
+    def __call__(self, c0_b, c0_s):
+        return [Titration.__call__(self, c0_b_i, c0_s_i) for (c0_b_i, c0_s_i) in zip(c0_b, c0_s)]
+
+
+class TitrationVolume(TWrapper):
     def __init__(self, V0, c0_b, pKs):
         self.c0_b = c0_b
         self.V0 = V0
@@ -52,14 +60,6 @@ class TitrationVolume(Titration):
     def percentage(self, percentage, n0_s):
         x = self.__call__(percentage * n0_s / self.c0_b, n0_s)
         return x
-
-
-class TWrapper(TitrationVolume):
-    def __init__(self, *args):
-        super().__init__(*args)
-
-    def __call__(self, c0_b, *args):
-        return [TitrationVolume.__call__(self, i, *args) for i in c0_b]
 
 
 class Titrafit(QWidget):
@@ -121,7 +121,7 @@ class Titrafit(QWidget):
             QMessageBox.information(self, "Hinweis", "Es muss mindestens ein Messwert angegeben werden.")
             return
 
-        t = TWrapper(v0, cB, pKs)
+        t = TitrationVolume(v0, cB, pKs)
         popt, _ = scipy.optimize.curve_fit(t, x, y, p0=(0.2,), bounds=(0, np.inf))
         xFit = np.linspace(x[0], x[-1], 500)
         self.axes.plot(xFit * 1000, t(xFit, *popt))
