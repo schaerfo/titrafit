@@ -32,8 +32,9 @@ from ui_inputform import Ui_inputForm
 
 try:
     from tfast import Titration
-except ImportError:
+except ImportError as e:
     print("tfast module not found, using Python implementation of fit function")
+    print(e)
     from titration import Titration
 
 
