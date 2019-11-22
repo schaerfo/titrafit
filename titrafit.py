@@ -124,6 +124,7 @@ class Titrafit(QWidget):
         t = TitrationVolume(v0, cB, pKs)
         popt, _ = scipy.optimize.curve_fit(t, x, y, p0=(0.2,), bounds=(0, np.inf))
         xFit = np.linspace(x[0], x[-1], 500)
+        self.updatePlot(x, y)
         self.axes.plot(xFit * 1000, t(xFit, *popt))
         self.canvas.draw()
         self.ui.resultLabel.setText(f"c<sub>0</sub> = {popt[0]} mol/l")
