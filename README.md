@@ -1,5 +1,5 @@
 # Titrafit
-## Prequisites
+## Prerequisites
 The following Python 3 packages must be installed to use Titrafit:
 * Matplotlib
 * NumPy
@@ -10,7 +10,7 @@ The following Python 3 packages must be installed to use Titrafit:
 Titrafit provides a C++ implementation of the fit function which greatly deduces the time required for the computation.
 For the compilation of the corresponding module, the following software is required:
 * [Pybind11](https://github.com/pybind/pybind11) headers (available via `pip` and some Linux package managers)
-* Python 3 headers (usually bundled with Python 3, in seperate package `libpython3-dev` on Debian/Ubuntu)
+* Python 3 headers (usually bundled with Python 3, in separate package `libpython3-dev` on Debian/Ubuntu)
 * A C++14-capable compiler such as g++, Clang oder MSVC
 
 On Linux, tfast can be compiled with the following command:
