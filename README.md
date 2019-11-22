@@ -1,4 +1,7 @@
 # Titrafit
+The algorithm which the fit function is based on is inspired by:  
+Binnewies, M.: Chemische Gleichgewichte. VCH, Weinheim, 1996.
+
 ## Prerequisites
 The following Python 3 packages must be installed to use Titrafit:
 * Matplotlib
