@@ -22,8 +22,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>187</width>
-    <height>170</height>
+    <width>244</width>
+    <height>182</height>
    </rect>
   </property>
   <layout class="QFormLayout" name="formLayout">
@@ -69,14 +69,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
    <item row="2" column="0">
     <widget class="QLabel" name="pKsLabel">
      <property name="text">
-      <string>pK&lt;sub&gt;s&lt;/sub&gt;:</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;pK&lt;span style=&quot; vertical-align:sub;&quot;&gt;a&lt;/span&gt;:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </item>
    <item row="3" column="0">
     <widget class="QLabel" name="valueLabel">
      <property name="text">
-      <string>Messwerte:</string>
+      <string>Measured Values:</string>
      </property>
     </widget>
    </item>

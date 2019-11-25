@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'mvtest/pksform.ui',
-# licensing of 'mvtest/pksform.ui' applies.
+# Form implementation generated from reading ui file 'pksform.ui',
+# licensing of 'pksform.ui' applies.
 #
-# Created: Wed Nov  6 20:45:20 2019
-#      by: pyside2-uic  running on PySide2 5.13.2
+# Created: Thu Nov 28 20:52:50 2019
+#      by: pyside2-uic  running on PySide2 5.13.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -56,5 +56,5 @@ class Ui_pKsForm(object):
     def retranslateUi(self, pKsForm):
         self.addButton.setText(QtWidgets.QApplication.translate("pKsForm", "+", None, -1))
         self.removeButton.setText(QtWidgets.QApplication.translate("pKsForm", "-", None, -1))
-        self.clearButton.setText(QtWidgets.QApplication.translate("pKsForm", "Löschen", None, -1))
+        self.clearButton.setText(QtWidgets.QApplication.translate("pKsForm", "Clear", None, -1))
 

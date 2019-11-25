@@ -22,12 +22,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>194</width>
-    <height>110</height>
+    <width>205</width>
+    <height>122</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Messwert eingeben</string>
+   <string>Add value</string>
   </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="labelAlignment">

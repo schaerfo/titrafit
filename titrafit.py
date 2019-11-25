@@ -103,23 +103,23 @@ class Titrafit(QWidget):
         # Volume input is in ml, therefore divide by 1000 to obtain l
         v0 = self.ui.v0Input.value() / 1000
         if v0 == 0.0:
-            QMessageBox.information(self, "Hinweis", "V<sub>0</sub> darf nicht 0 sein.")
+            QMessageBox.information(self, "Information", "V<sub>0</sub> must not be 0.")
             return
 
         cB = self.ui.cBInput.value()
         if cB == 0.0:
-            QMessageBox.information(self, "Hinweis", "c(NaOH) darf nicht 0 sein.")
+            QMessageBox.information(self, "Information", "c(NaOH) must not be 0.")
             return
 
         pKs = self.ui.pKsForm.pKsModel.pKs
         if not len(pKs):
-            QMessageBox.information(self, "Hinweis", "Es muss mindestens ein pK<sub>s</sub>-Wert angegeben werden.")
+            QMessageBox.information(self, "Information", "At least one pK<sub>a</sub> value must be specified.")
             return
 
         x, y = self.ui.measuredValuesForm.valuesModel.getValuesAsArrays()
         assert len(x) == len(y)
         if not len(x):
-            QMessageBox.information(self, "Hinweis", "Es muss mindestens ein Messwert angegeben werden.")
+            QMessageBox.information(self, "Information", "At least one measured value must be specified.")
             return
 
         t = TitrationVolume(v0, cB, pKs)

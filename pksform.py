@@ -38,7 +38,7 @@ class PKsForm(QWidget):
         self.ui.clearButton.clicked.connect(self.pKsModel.clear)
 
     def addPKs(self):
-        pKs, ok = QInputDialog.getDouble(self, "pKs-Wert hinzufügen", "pKs-Wert:", decimals=2)
+        pKs, ok = QInputDialog.getDouble(self, "Add pKa value", "pK<sub>a</sub> value:", decimals=2)
         if ok:
             self.pKsModel.addValue(pKs)
 

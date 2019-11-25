@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'mvtest/inputform.ui',
-# licensing of 'mvtest/inputform.ui' applies.
+# Form implementation generated from reading ui file 'inputform.ui',
+# licensing of 'inputform.ui' applies.
 #
-# Created: Fri Nov  8 14:37:34 2019
-#      by: pyside2-uic  running on PySide2 5.13.2
+# Created: Thu Nov 28 20:52:25 2019
+#      by: pyside2-uic  running on PySide2 5.13.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -13,7 +13,7 @@ from PySide2 import QtCore, QtGui, QtWidgets
 class Ui_inputForm(object):
     def setupUi(self, inputForm):
         inputForm.setObjectName("inputForm")
-        inputForm.resize(187, 170)
+        inputForm.resize(244, 182)
         self.formLayout = QtWidgets.QFormLayout(inputForm)
         self.formLayout.setLabelAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.formLayout.setContentsMargins(0, 0, 0, 0)
@@ -67,8 +67,8 @@ class Ui_inputForm(object):
     def retranslateUi(self, inputForm):
         self.vLabel.setText(QtWidgets.QApplication.translate("inputForm", "<html><head/><body><p>V<span style=\" vertical-align:sub;\">0</span> [ml]:</p></body></html>", None, -1))
         self.cBLabel.setText(QtWidgets.QApplication.translate("inputForm", "c(NaOH) [mol/l]:", None, -1))
-        self.pKsLabel.setText(QtWidgets.QApplication.translate("inputForm", "pK<sub>s</sub>:", None, -1))
-        self.valueLabel.setText(QtWidgets.QApplication.translate("inputForm", "Messwerte:", None, -1))
+        self.pKsLabel.setText(QtWidgets.QApplication.translate("inputForm", "<html><head/><body><p>pK<span style=\" vertical-align:sub;\">a</span>:</p></body></html>", None, -1))
+        self.valueLabel.setText(QtWidgets.QApplication.translate("inputForm", "Measured Values:", None, -1))
         self.fitButton.setText(QtWidgets.QApplication.translate("inputForm", "Fit", None, -1))
 
 from pksform import PKsForm

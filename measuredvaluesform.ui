@@ -49,14 +49,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
    <item row="9" column="3" colspan="2">
     <widget class="QPushButton" name="loadButton">
      <property name="text">
-      <string>Aus Datei laden...</string>
+      <string>Load from file...</string>
      </property>
     </widget>
    </item>
    <item row="8" column="3" colspan="2">
     <widget class="QPushButton" name="saveButton">
      <property name="text">
-      <string>In Datei speichern...</string>
+      <string>Save to file...</string>
      </property>
     </widget>
    </item>
@@ -70,7 +70,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
    <item row="3" column="4">
     <widget class="QPushButton" name="clearButton">
      <property name="text">
-      <string>Löschen</string>
+      <string>Clear</string>
      </property>
     </widget>
    </item>

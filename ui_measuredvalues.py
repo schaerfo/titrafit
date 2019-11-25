@@ -3,8 +3,8 @@
 # Form implementation generated from reading ui file 'measuredvaluesform.ui',
 # licensing of 'measuredvaluesform.ui' applies.
 #
-# Created: Thu Nov  7 16:00:46 2019
-#      by: pyside2-uic  running on PySide2 5.13.2
+# Created: Thu Nov 28 20:52:35 2019
+#      by: pyside2-uic  running on PySide2 5.13.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -46,8 +46,8 @@ class Ui_MeasuredValuesForm(object):
 
     def retranslateUi(self, MeasuredValuesForm):
         self.addButton.setText(QtWidgets.QApplication.translate("MeasuredValuesForm", "+", None, -1))
-        self.loadButton.setText(QtWidgets.QApplication.translate("MeasuredValuesForm", "Aus Datei laden...", None, -1))
-        self.saveButton.setText(QtWidgets.QApplication.translate("MeasuredValuesForm", "In Datei speichern...", None, -1))
+        self.loadButton.setText(QtWidgets.QApplication.translate("MeasuredValuesForm", "Load from file...", None, -1))
+        self.saveButton.setText(QtWidgets.QApplication.translate("MeasuredValuesForm", "Save to file...", None, -1))
         self.removeButton.setText(QtWidgets.QApplication.translate("MeasuredValuesForm", "-", None, -1))
-        self.clearButton.setText(QtWidgets.QApplication.translate("MeasuredValuesForm", "Löschen", None, -1))
+        self.clearButton.setText(QtWidgets.QApplication.translate("MeasuredValuesForm", "Clear", None, -1))
 
