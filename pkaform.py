@@ -21,29 +21,29 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from PySide2.QtWidgets import QInputDialog, QWidget
 
-from models import PKsModel
-from ui_pksform import Ui_pKsForm
+from models import PKaModel
+from ui_pkaform import Ui_pKaForm
 
 
-class PKsForm(QWidget):
+class PKaForm(QWidget):
     def __init__(self, parent=None):
         QWidget.__init__(self, parent)
-        self.ui = Ui_pKsForm()
+        self.ui = Ui_pKaForm()
         self.ui.setupUi(self)
 
-        self.pKsModel = PKsModel(self)
-        self.ui.list.setModel(self.pKsModel)
-        self.ui.addButton.clicked.connect(self.addPKs)
+        self.pKaModel = PKaModel(self)
+        self.ui.list.setModel(self.pKaModel)
+        self.ui.addButton.clicked.connect(self.addPKa)
         self.ui.removeButton.clicked.connect(self.removePKs)
-        self.ui.clearButton.clicked.connect(self.pKsModel.clear)
+        self.ui.clearButton.clicked.connect(self.pKaModel.clear)
 
-    def addPKs(self):
-        pKs, ok = QInputDialog.getDouble(self, "Add pKa value", "pK<sub>a</sub> value:", decimals=2)
+    def addPKa(self):
+        pKa, ok = QInputDialog.getDouble(self, "Add pKa value", "pK<sub>a</sub> value:", decimals=2)
         if ok:
-            self.pKsModel.addValue(pKs)
+            self.pKaModel.addValue(pKa)
 
     def removePKs(self):
         model = self.ui.list.selectionModel()
         if model.hasSelection():
-            self.pKsModel.removeValue(model.currentIndex().row())
+            self.pKaModel.removeValue(model.currentIndex().row())
             model.reset()

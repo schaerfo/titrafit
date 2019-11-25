@@ -43,10 +43,10 @@ public:
         float_type A;
     };
     
-    explicit Titration(std::vector<float_type> pKs):
-            m_Ks{[pKs = std::move(pKs)](){
+    explicit Titration(std::vector<float_type> pKa):
+            m_Ks{[pKa = std::move(pKa)](){
                 std::vector<float_type> res;
-                std::transform(pKs.begin(), pKs.end(), std::back_inserter(res), [](auto val){ // Lambda-ception
+                std::transform(pKa.begin(), pKa.end(), std::back_inserter(res), [](auto val){ // Lambda-ception
                     return std::pow(10, -val);
                 });
                 return res;
@@ -55,8 +55,8 @@ public:
     {
     }
     
-    Titration(std::initializer_list<float_type> pKs):
-            Titration{std::vector<float_type>{pKs}}
+    Titration(std::initializer_list<float_type> pKa):
+            Titration{std::vector<float_type>{pKa}}
     {
     }
 

@@ -67,7 +67,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <widget class="QDoubleSpinBox" name="cBInput"/>
    </item>
    <item row="2" column="0">
-    <widget class="QLabel" name="pKsLabel">
+    <widget class="QLabel" name="pKaLabel">
      <property name="text">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;pK&lt;span style=&quot; vertical-align:sub;&quot;&gt;a&lt;/span&gt;:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
@@ -88,7 +88,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </widget>
    </item>
    <item row="2" column="1">
-    <widget class="PKsForm" name="pKsForm" native="true">
+    <widget class="PKaForm" name="pKaForm" native="true">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
        <horstretch>0</horstretch>
@@ -118,9 +118,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  </widget>
  <customwidgets>
   <customwidget>
-   <class>PKsForm</class>
+   <class>PKaForm</class>
    <extends>QWidget</extends>
-   <header>pksform.h</header>
+   <header>pkaform.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>

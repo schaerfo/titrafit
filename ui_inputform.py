@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'inputform.ui',
 # licensing of 'inputform.ui' applies.
 #
-# Created: Thu Nov 28 20:52:25 2019
+# Created: Mon Nov 25 21:06:41 2019
 #      by: pyside2-uic  running on PySide2 5.13.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -31,23 +31,23 @@ class Ui_inputForm(object):
         self.cBInput = QtWidgets.QDoubleSpinBox(inputForm)
         self.cBInput.setObjectName("cBInput")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.cBInput)
-        self.pKsLabel = QtWidgets.QLabel(inputForm)
-        self.pKsLabel.setObjectName("pKsLabel")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.pKsLabel)
+        self.pKaLabel = QtWidgets.QLabel(inputForm)
+        self.pKaLabel.setObjectName("pKaLabel")
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.pKaLabel)
         self.valueLabel = QtWidgets.QLabel(inputForm)
         self.valueLabel.setObjectName("valueLabel")
         self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.valueLabel)
         self.fitButton = QtWidgets.QPushButton(inputForm)
         self.fitButton.setObjectName("fitButton")
         self.formLayout.setWidget(4, QtWidgets.QFormLayout.SpanningRole, self.fitButton)
-        self.pKsForm = PKsForm(inputForm)
+        self.pKaForm = PKaForm(inputForm)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pKsForm.sizePolicy().hasHeightForWidth())
-        self.pKsForm.setSizePolicy(sizePolicy)
-        self.pKsForm.setObjectName("pKsForm")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.pKsForm)
+        sizePolicy.setHeightForWidth(self.pKaForm.sizePolicy().hasHeightForWidth())
+        self.pKaForm.setSizePolicy(sizePolicy)
+        self.pKaForm.setObjectName("pKaForm")
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.pKaForm)
         self.measuredValuesForm = MeasuredValuesForm(inputForm)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
@@ -67,9 +67,9 @@ class Ui_inputForm(object):
     def retranslateUi(self, inputForm):
         self.vLabel.setText(QtWidgets.QApplication.translate("inputForm", "<html><head/><body><p>V<span style=\" vertical-align:sub;\">0</span> [ml]:</p></body></html>", None, -1))
         self.cBLabel.setText(QtWidgets.QApplication.translate("inputForm", "c(NaOH) [mol/l]:", None, -1))
-        self.pKsLabel.setText(QtWidgets.QApplication.translate("inputForm", "<html><head/><body><p>pK<span style=\" vertical-align:sub;\">a</span>:</p></body></html>", None, -1))
+        self.pKaLabel.setText(QtWidgets.QApplication.translate("inputForm", "<html><head/><body><p>pK<span style=\" vertical-align:sub;\">a</span>:</p></body></html>", None, -1))
         self.valueLabel.setText(QtWidgets.QApplication.translate("inputForm", "Measured Values:", None, -1))
         self.fitButton.setText(QtWidgets.QApplication.translate("inputForm", "Fit", None, -1))
 
-from pksform import PKsForm
 from measuredvaluesform import MeasuredValuesForm
+from pkaform import PKaForm

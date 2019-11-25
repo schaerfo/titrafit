@@ -23,33 +23,33 @@ import numpy as np
 from PySide2.QtCore import Qt, QAbstractListModel, QAbstractTableModel, Slot
 
 
-class PKsModel(QAbstractListModel):
+class PKaModel(QAbstractListModel):
     def __init__(self, parent=None):
         QAbstractListModel.__init__(self, parent)
-        self.pKs = []
+        self.pKa = []
 
     def rowCount(self, _):
-        return len(self.pKs)
+        return len(self.pKa)
 
     def data(self, index, role):
         if role == Qt.DisplayRole:
-            return self.pKs[index.row()]
+            return self.pKa[index.row()]
         else:
             return None
 
-    def addValue(self, pKs):
-        self.pKs.append(pKs)
-        self.pKs.sort()
+    def addValue(self, pKa):
+        self.pKa.append(pKa)
+        self.pKa.sort()
         self.layoutChanged.emit()
 
     def removeValue(self, index):
-        if index < len(self.pKs):
-            del self.pKs[index]
+        if index < len(self.pKa):
+            del self.pKa[index]
             self.layoutChanged.emit()
 
     @Slot()
     def clear(self):
-        self.pKs.clear()
+        self.pKa.clear()
         self.layoutChanged.emit()
 
 

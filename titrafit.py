@@ -47,10 +47,10 @@ class TWrapper(Titration):
 
 
 class TitrationVolume(TWrapper):
-    def __init__(self, V0, c0_b, pKs):
+    def __init__(self, V0, c0_b, pKa):
         self.c0_b = c0_b
         self.V0 = V0
-        super().__init__(pKs)
+        super().__init__(pKa)
 
     def __call__(self, V_b, n0_s):
         V = self.V0 + V_b
@@ -111,8 +111,8 @@ class Titrafit(QWidget):
             QMessageBox.information(self, "Information", "c(NaOH) must not be 0.")
             return
 
-        pKs = self.ui.pKsForm.pKsModel.pKs
-        if not len(pKs):
+        pKa = self.ui.pKaForm.pKaModel.pKa
+        if not len(pKa):
             QMessageBox.information(self, "Information", "At least one pK<sub>a</sub> value must be specified.")
             return
 
@@ -122,7 +122,7 @@ class Titrafit(QWidget):
             QMessageBox.information(self, "Information", "At least one measured value must be specified.")
             return
 
-        t = TitrationVolume(v0, cB, pKs)
+        t = TitrationVolume(v0, cB, pKa)
         popt, _ = scipy.optimize.curve_fit(t, x, y, p0=(0.2,), bounds=(0, np.inf))
         xFit = np.linspace(x[0], x[-1], 500)
         self.updatePlot(x, y)

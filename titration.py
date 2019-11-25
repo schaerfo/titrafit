@@ -7,8 +7,8 @@ epsilon = 1e-8
 
 
 class Titration:
-    def __init__(self, pKs):
-        self.Ks = [pow(10, -i) for i in pKs]
+    def __init__(self, pKa):
+        self.Ks = [pow(10, -i) for i in pKa]
         self.result_cache = []
 
     def __call__(self, c0_b, c0_s):
