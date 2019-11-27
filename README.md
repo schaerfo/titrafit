@@ -9,6 +9,13 @@ The following Python 3 packages must be installed to use Titrafit:
 * PySide2
 * SciPy
 
+## Input data format
+The for the input data must be in an xy format with a dot as decimal separator. The first column contains the volume
+of the added NaOH solution in ml and the second column the corresponding pH values. Lines starting with `#` are ignored.
+
+Example files are provided in the `exampledata` directory. For these files, V0 = 200 ml and c(NaOH) = 0.1 mol/l.
+The pKa values of sulfuric acid are -3 and 1.8, those of phosphoric acid are 2.12, 7.20 and 12.36.
+
 ## Building tfast
 Titrafit provides a C++ implementation of the fit function which greatly deduces the time required for the computation.
 For the compilation of the corresponding module, the following software is required:
