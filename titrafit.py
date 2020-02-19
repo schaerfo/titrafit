@@ -20,6 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 from sys import argv
+from time import monotonic
 
 import numpy as np
 import scipy.optimize
@@ -123,12 +124,17 @@ class Titrafit(QWidget):
             return
 
         t = TitrationVolume(v0, cB, pKa)
+
+        start = monotonic()
         popt, _ = scipy.optimize.curve_fit(t, x, y, p0=(0.2,), bounds=(0, np.inf))
         xFit = np.linspace(x[0], x[-1], 500)
+        yFit = t(xFit, *popt)
+        duration = monotonic() - start
+
         self.updatePlot(x, y)
-        self.axes.plot(xFit * 1000, t(xFit, *popt))
+        self.axes.plot(xFit * 1000, yFit)
         self.canvas.draw()
-        self.ui.resultLabel.setText(f"c<sub>0</sub> = {popt[0]} mol/l")
+        self.ui.resultLabel.setText(f"c<sub>0</sub> = {popt[0]} mol/l; Duration: {duration} s")
 
 
 def main():
